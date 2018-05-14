@@ -1,5 +1,7 @@
 					<?php include_once('db.php');
 class Categories extends dbConnect{
+
+	/*for showing categories sub categories on admin table*/
 public function listallcategories()
 {
 ?>
@@ -29,6 +31,8 @@ $sql="SELECT * from categories";
                                         <td><?php echo$row['status'];?></td>
                                            <td><?php echo$row['date'];?></td>
                                            <td> </td>
+																					 <td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
+																					 <td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
 
 
 </tr>
@@ -53,6 +57,10 @@ $id2=$row1['cid'];
 	 	 <td></td>
 
 <td><?php echo$row1['cid'];?></td>
+<td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
+<td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
+
+
 </tr>
 <?php
 $sql2="SELECT * from subcategory where cid='$id1'";
@@ -69,6 +77,9 @@ while($row2=mysqli_fetch_array($query2))
 <td> </td>
 
 <td><?php echo$row2['cid'];?></td>
+<td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
+<td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
+
 </tr>
 
 <?php
@@ -84,7 +95,10 @@ while($row2=mysqli_fetch_array($query2))
 
 
 }
+/* END ------for showing categories sub categories on admin table*/
 
+
+/*for showing  sub categories only on modal on admin table*/
 public function listsubcategory(){
 	$sql3="SELECT * from categories";
 	 $query3=mysqli_query($this->db,$sql3);
@@ -107,26 +121,11 @@ $id3=$row3['id'];
 <tr>
 <?php
 
-
-
-
+}
 }
 
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-}
+/*for showing sub sub categories on admin table*/
 public function subsubcategory()
 {
 
@@ -155,7 +154,10 @@ public function subsubcategory()
 }
 
 }
+/* END -----for showing SUB sub categories on admin table*/
 
+
+/*for inserting categories on admin table*/
 public function InsertCategory($cat_name,$status)
 {
 $sql7="Insert into categories set  name='$cat_name' ,status='$status'";
@@ -184,7 +186,7 @@ header("location:url.php?slider");
 
 
 
-
+/*for showing categories on select admin table*/
 public function selectallcatgories()
 
 {
@@ -197,7 +199,7 @@ while($row=mysqli_fetch_array($query8))
 <?php
 }
 }
-
+/* end -----for showing categories on select admin table*/
 
 
 }

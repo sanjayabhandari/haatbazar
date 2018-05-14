@@ -40,14 +40,15 @@
                                 <thead>
                                     <tr>
                                         <th width="100px" nowrap>ID</th>
-                                        <th width="200px" nowrap>NAME</th>
-																		    <th width="200px" nowrap>Category</th>
-																				   <th width="200px" nowrap>SubCategory</th>
-																					    <th width="200px" nowrap>sub-sub-Category</th>
+                                        <th width="100px" nowrap>NAME</th>
+																		    <th width="10px" nowrap>Category</th>
+																				   <th width="20px" nowrap>SubCategory</th>
+																					    <th width="20px" nowrap>sub-sub-Category</th>
                                         <th width="200px" nowrap>STATUS</th>
                                         <th width="200px" nowrap>DATE</th>
                                         <th>CID</th>
-
+																				<th>EDIT</th>
+                                           	<th>DELETE</th>
 
                                     </tr>
                                 </thead>
@@ -158,19 +159,19 @@
 <h4 class="modal-title">Modal Header</h4>
 </div>
 <div class="modal-body">
-<form method="post" action="url.php">
+<form method="post">
 
 			<label id="a">CATEGORY</label>
-		 <input type="text" name="cat_name" id="categoryy" class="form-control" required />
+		 <input type="text" name="cat_name" id="categoryname" class="form-control"  />
 		 <br />
 
 		 <div align="right">
 					<input type="hidden" name="action" id="action" />
 					<input type="hidden" name="user_id" id="user_id" />
-					<input type="submit" name="button_actiona" id="button_action" class="btn btn-success" value="active"/>
+					<button  id="button_actiona" class="btn btn-success">ACTIVE</button>
 
 
-		 <input type="submit"  name="button_action" id="button_action"  class="btn btn-danger" value="deactive">
+		 <button   id="button_actionb"  class="btn btn-danger" >DEACTIVE</button>
 		 </div>
 
 

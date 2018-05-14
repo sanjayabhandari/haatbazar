@@ -25,6 +25,21 @@ if($_POST["action"] == "fetchsubsubcat")
 			$category->subsubcategory();
 
 }
+if($_POST["action"] == "insert")
+{
+ include('class/class.categories.php');
+ $category =new Categories();
+ $cat_name=$_POST["cat_name"];
+ $status="active";
+ $category->InsertCategory($cat_name,$status);
+
+
+
+}
+
+
+
+
 }
 
 if(isset($_GET["action"]))
@@ -40,9 +55,12 @@ $category->listallcategories();
 
 
 }
-
-
-
 }
+
+
+
+
+
+
 
 ?>

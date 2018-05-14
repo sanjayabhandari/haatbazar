@@ -130,6 +130,33 @@ $(document).ready(function(){
               $("#b").show();
                   $("#a").show();
     });
+  $(document).on('click', '#button_actiona', function(){
+
+
+                var cat_name= $('#categoryname').val();
+                var action="insert";
+
+                    if(cat_name!='')
+                    {
+                      $.ajax({
+   url:"ajaxcontrol.php",
+   method:"POST",
+   data:{cat_name:cat_name,action:action},
+   dataType:"text",
+   success:function(data)
+   {
+
+      load_image_data();
+   }
+})
+                    }
+                    else
+                    {
+                         alert("Both Fields are Required");
+                    }
+               });
+
+
 
     });
 </script>
