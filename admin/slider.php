@@ -219,7 +219,9 @@ $category->selectallcatgories();?>
 </div>
 </div>
 </div>
+<script>
 
+</script>
 
 <div id="userModal" class="modal fade">
  <div class="modal-dialog">

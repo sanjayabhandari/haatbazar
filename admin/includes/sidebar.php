@@ -1,5 +1,5 @@
 		<!-- end #header -->
-		
+
 		<!-- begin #sidebar -->
 		<div id="sidebar" class="sidebar">
 			<!-- begin sidebar scrollbar -->
@@ -35,9 +35,9 @@
 						<a href="url.php?slider">
 						    <b class="caret pull-right"></b>
 						    <i class="fa fa-th"></i>
-						    <span>SLIDER</span>
+						    <span>Categories</span>
 						</a>
-					
+
 					</li>
 						<li class="has-sub">
 						<a href="url.php?profile">
@@ -45,12 +45,12 @@
 						    <i class="fa fa-th"></i>
 						    <span>profile</span>
 						</a>
-					
+
 					</li>
 					<li class="has-sub">
 						<a href="javascript:;">
 							<span class="badge pull-right">10</span>
-							<i class="fa fa-inbox"></i> 
+							<i class="fa fa-inbox"></i>
 							<span>Email</span>
 						</a>
 						<ul class="sub-menu">
@@ -64,7 +64,7 @@
 						<a href="javascript:;">
 						    <b class="caret pull-right"></b>
 						    <i class="fa fa-suitcase"></i>
-						    <span>UI Elements <span class="label label-theme m-l-5">NEW</span></span> 
+						    <span>UI Elements <span class="label label-theme m-l-5">NEW</span></span>
 						</a>
 						<ul class="sub-menu">
 							<li><a href="ui_general.html">General</a></li>
@@ -88,7 +88,7 @@
 						<a href="javascript:;">
 						    <b class="caret pull-right"></b>
 						    <i class="fa fa-file-o"></i>
-						    <span>Form Stuff <span class="label label-theme m-l-5">NEW</span></span> 
+						    <span>Form Stuff <span class="label label-theme m-l-5">NEW</span></span>
 						</a>
 						<ul class="sub-menu">
 							<li><a href="form_elements.html">Form Elements</a></li>
@@ -104,11 +104,11 @@
 							<li><a href="form_dropzone.html">Dropzone <i class="fa fa-paper-plane text-theme m-l-5"></i></a></li>
 						</ul>
 					</li>
-				
+
 					<li class="has-sub">
 						<a href="javascript:;">
 						    <b class="caret pull-right"></b>
-							<i class="fa fa-star"></i> 
+							<i class="fa fa-star"></i>
 							<span>Front End</span>
 						</a>
 						<ul class="sub-menu">
@@ -246,7 +246,7 @@
 					<li class="has-sub">
 						<a href="javascript:;">
 						    <b class="caret pull-right"></b>
-						    <i class="fa fa-align-left"></i> 
+						    <i class="fa fa-align-left"></i>
 						    <span>Menu Level</span>
 						</a>
 						<ul class="sub-menu">
@@ -284,4 +284,3 @@
 		</div>
 		<div class="sidebar-bg"></div>
 		<!-- end #sidebar -->
-		

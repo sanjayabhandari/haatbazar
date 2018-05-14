@@ -158,23 +158,51 @@ $(document).ready(function(){
        })
       });
 
+
+
+
                 $(document).on('click', '.delete', function(){
        var id=$(this).data("id3");
        var action="deletecat";
-       if(confirm("Are you sure you want to delete this?"))
-       {
-           $.ajax({
-               url:"ajaxcontrol.php",
-               method:"POST",
-               data:{action:action,id:id},
-               dataType:"text",
-               success:function(data){
+       swal({
+   title: "Are you sure?",
+   text: "You will not be able to recover this data!",
+   type: "warning",
+   showCancelButton: true,
+   confirmButtonClass: "btn-danger",
+   confirmButtonText: "Yes, delete it!",
+   cancelButtonText: "No,dont delete it!",
+   closeOnConfirm: false,
+   closeOnCancel: false
+ },
+ function(isConfirm) {
+   if (isConfirm)
+   {
+   $.ajax({
+       url:"ajaxcontrol.php",
+       method:"POST",
+       data:{action:action,id:id},
+       dataType:"text",
+       success:function(data){
+swal("Deleted!", "Your data has been deleted.", "success");
+     load_image_data();
 
-             load_image_data();
+     }
 
-             }
-           });
-       }
+
+  });
+
+}
+else {
+ swal("Cancelled", "Your data is safe :)", "error");
+}
+
+
+
+
+
+ });
+
    });
      $(document).on('click', '.refresh', function(){
                   load_image_data();
