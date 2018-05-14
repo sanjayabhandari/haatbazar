@@ -36,8 +36,28 @@ if($_POST["action"] == "insert")
 
 
 }
+if($_POST["action"] == "deletecat")
+{
+ include('class/class.categories.php');
+  extract($_POST);
+ $category =new Categories();
+
+  $category->Deletecategory($id);
 
 
+
+
+}
+if($_POST["action"] == "cupdate")
+{
+ include('class/class.categories.php');
+
+ $id = $_POST["cat_id"];
+
+  $category =new Categories();
+  $category->fetchsingle($id);
+
+}
 
 
 }

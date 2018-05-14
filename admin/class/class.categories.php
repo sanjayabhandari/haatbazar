@@ -24,16 +24,16 @@ $sql="SELECT * from categories";
 
 
                                     <tr class="odd gradeX">
-                                        <td editable>  <?php echo$row['id'];?></td>
-                                        <td><?php echo$row['name'];?></td>
+                                        <td class="last_name" data-id1="<?php echo$row['id'];?>" contenteditable>  <?php echo$row['id'];?></td>
+                                        <td class="last_name" data-id2="<?php echo$row['id'];?>" contenteditable><?php echo$row['name'];?></td>
 																				 <td><i class="fa fa-2x fa-check" style="color:green;"><td>
 																					 <td></td>
-                                        <td><?php echo$row['status'];?></td>
-                                           <td><?php echo$row['date'];?></td>
+                                        <td  data-id3="<?php echo$row['id'];?>" contenteditable><?php echo$row['status'];?></td>
+                                           <td  data-id4="<?php echo$row['id'];?>" contenteditable><?php echo$row['date'];?></td>
                                            <td> </td>
-																					 <td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
-																					 <td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
-
+																					 <td>	<button type="button" name="update" data-id0="<?php echo$row['id'];?>" class="btn btn-xs btn-success update">EDIT</button></td>
+																					 <td><button type="button"  data-id3="<?php echo$row['id'];?>" class="btn btn-xs btn-danger delete">DELETE</button></td>
+  class="btn btn-warning btn-xs update"
 
 </tr>
 
@@ -58,7 +58,7 @@ $id2=$row1['cid'];
 
 <td><?php echo$row1['cid'];?></td>
 <td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
-<td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
+<td><button type="button"  data-id3="<?php echo$row1["id"];?>" class="btn btn-xs btn-danger delete">DELETE</button></td>
 
 
 </tr>
@@ -78,7 +78,7 @@ while($row2=mysqli_fetch_array($query2))
 
 <td><?php echo$row2['cid'];?></td>
 <td>	<button type="button" class="btn btn-xs btn-success">EDIT</button></td>
-<td><button type="button" class="btn btn-xs btn-danger">DELETE</button></td>
+<td><button type="button" data-id4="<?php echo$row2["id"]?>" class="btn btn-xs btn-danger delete">DELETE</button></td>
 
 </tr>
 
@@ -167,7 +167,18 @@ header("location:url.php?slider");
 
 }
 }
-//public function InsertSubcategory($cname,$cid,)
+/*for showing sub sub categories on admin table*/
+public function Deletecategory($id)
+{
+$sql8="DELETE FROM categories where id='$id'";
+$query8=mysqli_query($this->db,$sql8);
+if($query8)
+{
+
+echo"Category deleted";
+
+}
+}
 
 
 
@@ -178,11 +189,6 @@ header("location:url.php?slider");
 
 
 
-
-
-
-
-//}
 
 
 
@@ -202,10 +208,56 @@ while($row=mysqli_fetch_array($query8))
 /* end -----for showing categories on select admin table*/
 
 
+
+
+
+
+
+
+public function edit($id,$text,$column_name)
+{
+
+$sql = "UPDATE categories SET ".$column_name."='".$text."' WHERE id='".$id."'";
+if(mysqli_query($this->db, $sql))
+{
+	echo 'CATEGORY Updated';
+}
+else{
+	$sql9 = "UPDATE SUBCATEGOR SET ".$column_name."='".$text."' WHERE id='".$id."'";
+
+if(mysqli_query($this->db, $sql9))
+{
+echo 'SUB-CATEGORY Updated';
+
+
 }
 
+}
+}
+
+public function fetchsingle($id)
+{
+ $output = array();
+	$sql10="SELECT * FROM categories WHERE id ='$id' LIMIT 1";
+	$query10=mysqli_query($this->db,$sql10);
+	$row10=mysqli_fetch_array($query10);
 
 
 
+foreach($row10 as $row11)
+ {
+  $output["name"] = $row11["name"];
+  $output["status"] = $row11["status"];
+
+
+ }
+ echo json_encode($output);
+
+
+
+
+	}
+
+}
 
 ?>

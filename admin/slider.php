@@ -29,7 +29,7 @@
 																<a href="#"  data-toggle="modal" data-target="#myModal1">View subcategory</a>
                                  <a href="#"  data-toggle="modal" data-target="#myModal2">View sub-sub-category</a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success refresh" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
                             </div>
@@ -45,7 +45,7 @@
 																				   <th width="20px" nowrap>SubCategory</th>
 																					    <th width="20px" nowrap>sub-sub-Category</th>
                                         <th width="200px" nowrap>STATUS</th>
-                                        <th width="200px" nowrap>DATE</th>
+                                        <th width="100px" nowrap>DATE</th>
                                         <th>CID</th>
 																				<th>EDIT</th>
                                            	<th>DELETE</th>
@@ -221,6 +221,35 @@ $category->selectallcatgories();?>
 </div>
 
 
+<div id="userModal" class="modal fade">
+ <div class="modal-dialog">
+  <form method="post" id="user_form" enctype="multipart/form-data">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+     <h4 class="modal-title">Add User</h4>
+    </div>
+    <div class="modal-body">
+     <label>Enter First Name</label>
+     <input type="text" name="first_name" id="first_name" class="form-control" />
+     <br />
+     <label>Enter Last Name</label>
+     <input type="text" name="last_name" id="last_name" class="form-control" />
+     <br />
+     <label>Select User Image</label>
+     <input type="file" name="user_image" id="user_image" />
+     <span id="user_uploaded_image"></span>
+    </div>
+    <div class="modal-footer">
+     <input type="hidden" name="user_id" id="user_id" />
+     <input type="hidden" name="operation" id="operation" />
+     <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
 
 
 

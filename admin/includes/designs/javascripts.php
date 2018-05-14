@@ -96,67 +96,92 @@ $(document).ready(function(){
      }
     });
    }
+   $(document).on('click', '#button_actiona', function(){
+
+
+                 var cat_name= $('#categoryname').val();
+                 var action="insert";
+
+                     if(cat_name!='')
+                     {
+                       $.ajax({
+    url:"ajaxcontrol.php",
+    method:"POST",
+    data:{cat_name:cat_name,action:action},
+    dataType:"text",
+    success:function(data)
+    {
+
+       load_image_data();
+    }
+ });
+                     }
+                     else
+                     {
+                          alert("Both Fields are Required");
+                     }
+                });
+                function edit_data(id, text, column_name)
+                  {
+                    var action="update";
+                      $.ajax({
+                          url:"ajaxcontrol.php",
+                          method:"POST",
+                          data:{action:action,id:id, text:text, column_name:column_name},
+                          dataType:"text",
+                          success:function(data){
+                              alert(data);
+              				$('#result').html("<div class='alert alert-success'>"+data+"</div>");
+                          }
+                      });
+                  }
+                  $(document).on('click', '.update', function(){
+                    var action ="cupdate";
+       var cat_id = $(this).attr("id0");
+
+       $.ajax({
+        url:"ajaxcontrol.php",
+        method:"POST",
+        data:{action:action,cat_id:cat_id},
+        dataType:"text",
+        success:function(data)
+        {
+         $('#userModal').modal('show');
+         $('#first_name').val(data.id0);
+         $('#last_name').val(data.status);
+         $('.modal-title').text("Edit category");
+         $('#user_id').val(id);
+
+         $('#action').val("Edit");
+         $('#operation').val("Edit");
+        }
+       })
+      });
+
+                $(document).on('click', '.delete', function(){
+       var id=$(this).data("id3");
+       var action="deletecat";
+       if(confirm("Are you sure you want to delete this?"))
+       {
+           $.ajax({
+               url:"ajaxcontrol.php",
+               method:"POST",
+               data:{action:action,id:id},
+               dataType:"text",
+               success:function(data){
+
+             load_image_data();
+
+             }
+           });
+       }
+   });
+     $(document).on('click', '.refresh', function(){
+                  load_image_data();
+     });
 
 
 
         });
 
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-   $("#subsubcategory").click(function(){
-        $("#categoryy").hide();
-         $("#sub_category").show();
-          $("#subsub_category").show();
-          $("#c").show();
-              $("#b").show();
-                  $("#a").hide();
-    });
-
-    $("#category").click(function(){
-        $("#categoryy").show();
-         $("#sub_category").hide();
-          $("#subsub_category").hide();
-            $("#c").hide();
-              $("#b").hide();
-                  $("#a").show();
-    });
-     $("#subcategory").click(function(){
-        $("#categoryy").show();
-         $("#sub_category").show();
-          $("#subsub_category").hide();
-            $("#c").hide();
-              $("#b").show();
-                  $("#a").show();
-    });
-  $(document).on('click', '#button_actiona', function(){
-
-
-                var cat_name= $('#categoryname').val();
-                var action="insert";
-
-                    if(cat_name!='')
-                    {
-                      $.ajax({
-   url:"ajaxcontrol.php",
-   method:"POST",
-   data:{cat_name:cat_name,action:action},
-   dataType:"text",
-   success:function(data)
-   {
-
-      load_image_data();
-   }
-})
-                    }
-                    else
-                    {
-                         alert("Both Fields are Required");
-                    }
-               });
-
-
-
-    });
 </script>
