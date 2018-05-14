@@ -7,67 +7,27 @@
 				<li class="active">SUB-SUB-CATEGORIES</li>
 			</ol>
 			<!-- end breadcrumb -->
-	
+
 			<!-- end page-header -->
-			
+
 			<!-- begin row -->
 			<div class="row">
 			    <!-- begin col-2 -->
-		
+
 			    <!-- end col-2 -->
 			    <!-- begin col-10 -->
 			    <div class="col-md-12">
-			    	      	      <div class="container box" style=" width:100%;  
-                     padding:20px; 
-
-                     background-color:#fff;  
-                     border:1px solid #ccc;  
-                     border-radius:1px;  
-                     margin-top:10px;  ">  
-           
-                
-                <br /><br />  
-                <div id="user_collapse" class="collapse">  
-                     <form method="post" id="user_form"> 
-                        <label>YOU ARE GOING TO ADD?</label> <br/>
-                         <label>CATEGORY</label> 
-                          <input type="checkbox" name="category" value="1" id="category"  />  
-                            <label>SUB-CATEGORY</label> 
-                          <input type="checkbox" name="subcategory" value="2" id="subcategory"  /> 
-                             <label>SUB-SUB-CATEGORY</label> 
-                          <input type="checkbox" name="subsubcategory" value="3" id="subsubcategory"  /> 
-                          <br />  
-                           <label id="a">CATEGORY</label>  
-                          <input type="text" name="last_name" id="categoryy" class="form-control" />  
-                          <br />  
-
-                          <label id="b">SUB-CATEGORY NAME</label>  
-                          <input type="text" name="first_name" id="sub_category" class="form-control" />  
-                          <br />  
-                          <label id="c">OTHER</label>  
-                          <input type="text" name="last_name" id="subsub_category" class="form-control" />  
-                          <br />  
 
 
-                          <label>Select User Image</label>  
-                          <input type="file" name="user_image" id="user_image" />  
-                          <input type="hidden" name="hidden_user_image" id="hidden_user_image" />  
-                          <span id="uploaded_image"></span>  
-                          <br />  
-                          <div align="center">  
-                               <input type="hidden" name="action" id="action" />  
-                               <input type="hidden" name="user_id" id="user_id" />  
-                               <input type="submit" name="button_action" id="button_action" class="btn btn-default" value="Insert" />  
-                          </div>  
-                          <br />  
-                     </form>  
-                </div>
-            </div>
                     <div class="panel panel-inverse">
                         <div class="panel-heading">
                             <div class="panel-heading-btn">
-                            	<a href="#" data-toggle="collapse" data-target="#user_collapse"><i class="fa fa-2x fa-plus" ></i></a>
 
+                            	<a href="#" data-toggle="modal" data-target="#myModal">Add Category</a>
+																<a href="#" data-toggle="modal" data-target="#myModal3">Add SubCategory</a>
+
+																<a href="#"  data-toggle="modal" data-target="#myModal1">View subcategory</a>
+                                 <a href="#"  data-toggle="modal" data-target="#myModal2">View sub-sub-category</a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
                                 <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
@@ -81,6 +41,9 @@
                                     <tr>
                                         <th width="100px" nowrap>ID</th>
                                         <th width="200px" nowrap>NAME</th>
+																		    <th width="200px" nowrap>Category</th>
+																				   <th width="200px" nowrap>SubCategory</th>
+																					    <th width="200px" nowrap>sub-sub-Category</th>
                                         <th width="200px" nowrap>STATUS</th>
                                         <th width="200px" nowrap>DATE</th>
                                         <th>CID</th>
@@ -88,15 +51,11 @@
 
                                     </tr>
                                 </thead>
-                                <tbody >
-                                	<?php 
-                                	include('class/class.categories.php');
-$category =new Categories();
-$category->listallcategories();
+                                <tbody class="tbl_image">
 
 
-                                	?>
-                              
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -109,8 +68,179 @@ $category->listallcategories();
 
 			<!-- end row -->
 		</div>
+		<div class="modal fade" id="myModal2" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title"></h4>
+</div>
+<div class="modal-body">
+		<div class="panel panel-inverse" data-sortable-id="table-basic-2">
+											<div class="panel-heading">
+
+													<h4 class="panel-title">SUB-SUB CATEGORIES</h4>
+											</div>
+											<div class="panel-body">
+													<table class="table table-hover">
+															<thead>
+																	<tr>
+																			<th>CATEGORY</th>
+																				<th>ID</th>
+																				<th>SUB-CATEGORY</th>
+																				<th>CID</th>
+
+
+																	</tr>
+															</thead>
+															<tbody id="subsubcategory">
+
+															</tbody>
+													</table>
+											</div>
+									</div>
+
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+								</div>
+								</div>
+								</div>
+
+
+
+		<!--for subcategory-->
+		<div class="modal fade" id="myModal1" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title"></h4>
+</div>
+<div class="modal-body">
+		<div class="panel panel-inverse" data-sortable-id="table-basic-2">
+											<div class="panel-heading">
+
+													<h4 class="panel-title"> SUB CATEGORIES</h4>
+											</div>
+											<div class="panel-body">
+													<table class="table table-hover">
+															<thead>
+																	<tr>
+																			<th>CATEGORY</th>
+																				<th>ID</th>
+																				<th>SUB-CATEGORY</th>
+																				<th>CID</th>
+
+
+																	</tr>
+															</thead>
+															<tbody id="subcategory">
+
+
+															</tbody>
+													</table>
+											</div>
+									</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+								</div>
+								</div>
+								</div>
+		<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Modal Header</h4>
+</div>
+<div class="modal-body">
+<form method="post" action="url.php">
+
+			<label id="a">CATEGORY</label>
+		 <input type="text" name="cat_name" id="categoryy" class="form-control" required />
+		 <br />
+
+		 <div align="right">
+					<input type="hidden" name="action" id="action" />
+					<input type="hidden" name="user_id" id="user_id" />
+					<input type="submit" name="button_actiona" id="button_action" class="btn btn-success" value="active"/>
+
+
+		 <input type="submit"  name="button_action" id="button_action"  class="btn btn-danger" value="deactive">
+		 </div>
+
+
+</form>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="myModal3" role="dialog">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Modal Header</h4>
+</div>
+<div class="modal-body">
+<form method="post" action="url.php">
+	<input type="text" name="subsubcat_name" id="subsubcategoryy" class="form-control" />
+  <br />
+	<label id="a">CATEGORY</label>
+	<select class="form-control">
+ <?php
+include('class/class.categories.php');
+$category = new Categories();
+$category->selectallcatgories();?>
+</select>
+
+
+
+ <div align="right">
+			<input type="hidden" name="action" id="action" />
+			<input type="hidden" name="user_id" id="user_id" />
+			<input type="submit" name="button_actiona" id="button_action" class="btn btn-success" value="active"/>
+
+
+ <input type="submit"  name="button_action" id="button_action"  class="btn btn-danger" value="deactive">
+ </div>
+
+
+</form>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
 		<!-- end scroll to top btn -->
 	</div>
 	<!-- end page container -->
-	

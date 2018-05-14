@@ -1,12 +1,28 @@
 <?php if(isset($_POST["action"]))
 {
-	 if($_POST["action"] == "fetch")  
+	 if($_POST["action"] == "fetch")
 	{
-		
+
 include('class/class.categories.php');
 $category =new Categories();
 $category->listallcategories();
 
+
+}
+if($_POST["action"] == "fetchsubcat")
+{
+
+	include_once('class/class.categories.php');
+		$category =new Categories();
+		$category->listsubcategory();
+
+}
+if($_POST["action"] == "fetchsubsubcat")
+{
+
+	include_once('class/class.categories.php');
+			$category =new Categories();
+			$category->subsubcategory();
 
 }
 }
@@ -22,7 +38,7 @@ $category->listallcategories();
 
 
 
-	
+
 }
 
 

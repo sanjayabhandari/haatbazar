@@ -31,6 +31,51 @@ include('profile.php');
 
 
 }?>
+<?php if($_SERVER['REQUEST_METHOD']=='POST')
+{
+
+	if(isset($_POST['button_actiona']))
+	{
+extract($_POST);
+		include('class/class.categories.php');
+		$category =new Categories();
+		$status="active";
+		$category->InsertCategory($cat_name,$status);
+
+}
+if(isset($_POST['button_action']))
+{
+
+	include('class/class.categories.php');
+	$category =new Categories();
+	$status="deactive";
+	$category->InsertCategory($cat_name,$status);
+
+}
+}
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php include('includes/designs/javascripts.php');?>
 </body>
 </html>

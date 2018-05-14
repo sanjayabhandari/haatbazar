@@ -10,7 +10,7 @@
   <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
   <script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
   <!-- ================== END BASE JS ================== -->
-  
+
   <!-- ================== BEGIN PAGE LEVEL JS ================== -->
   <script src="assets/plugins/DataTables/media/js/jquery.dataTables.js"></script>
   <script src="assets/plugins/DataTables/media/js/dataTables.bootstrap.min.js"></script>
@@ -31,7 +31,7 @@
   <script src="assets/js/table-manage-combine.demo.min.js"></script>
   <script src="assets/js/apps.min.js"></script>
   <!-- ================== END PAGE LEVEL JS ================== -->
-  
+
   <script>
     $(document).ready(function() {
       App.init();
@@ -49,7 +49,7 @@
 </script>
 
 
-  
+
 <script>
 $(document).ready(function(){
  load_image_data();
@@ -67,8 +67,38 @@ $(document).ready(function(){
   });
  }
 
+  load_subcat_data();
+  function load_subcat_data()
+  {
+   var action="fetchsubcat";
+   $.ajax({
+    url:"ajaxcontrol.php",
+    method:"POST",
+    data:{action:action},
+    success:function(data)
+    {
+     $('#subcategory').html(data);
+    }
+   });
+  }
 
-      
+   load_subsubcat_data();
+   function load_subsubcat_data()
+   {
+    var action="fetchsubsubcat";
+    $.ajax({
+     url:"ajaxcontrol.php",
+     method:"POST",
+     data:{action:action},
+     success:function(data)
+     {
+      $('#subsubcategory').html(data);
+     }
+    });
+   }
+
+
+
         });
 
 </script>
@@ -101,47 +131,5 @@ $(document).ready(function(){
                   $("#a").show();
     });
 
-  ('#user_form').on('submit', function(event){  
-                event.preventDefault();  
-                var firstName = $('#first_name').val();  
-                var lastName = $('#last_name').val();  
-                var extension = $('#user_image').val().split('.').pop().toLowerCase();  
-                if(extension != '')  
-                {  
-                     if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
-                     {  
-                          alert("Invalid Image File");  
-                          $('#user_image').val('');  
-                          return false;  
-                     }  
-                }  
-                if(firstName != '' && lastName != '')  
-                {  
-                     $.ajax({  
-                          url:"action.php",  
-                          method:'POST',  
-                          data:new FormData(this),  
-                          contentType:false,  
-                          processData:false,  
-                          success:function(data)  
-                          {  
-                               alert(data);  
-                               $('#user_form')[0].reset();  
-                               load_data();  
-                               $("#action").val("Insert");  
-                               $('#button_action').val("Insert");  
-                               $('#uploaded_image').html('');  
-                          }  
-                     });  
-                }  
-                else  
-                {  
-                     alert("Both Fields are Required");  
-                }  
-           });  
-  });
-
-
-
-
+    });
 </script>
