@@ -15,19 +15,27 @@ include('includes/sidebar.php');
 ?>
 <?php if(isset($_GET['dashboard']))
 {
+
+
 header('location:index.php');
 
 }?>
 
-<?php if(isset($_GET['slider']))
+<?php if(isset($_GET['category']))
 {
-include('slider.php');
+include('category.php');
 
 
 }?>
 <?php if(isset($_GET['profile']))
 {
 include('profile.php');
+
+
+}?>
+<?php if(isset($_GET['product']))
+{
+include('products.php');
 
 
 }?>

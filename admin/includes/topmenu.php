@@ -1,7 +1,7 @@
     <!-- begin #page-loader -->
     <div id="page-loader" class="fade in"><span class="spinner"></span></div>
     <!-- end #page-loader -->
-    
+
     <!-- begin #page-container -->
     <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
         <!-- begin #header -->
@@ -18,7 +18,5 @@
                     </button>
                 </div>
                 <!-- end mobile sidebar expand / collapse button -->
-                
+
                 <!-- begin header navigation right -->
-
-

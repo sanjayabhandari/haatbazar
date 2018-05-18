@@ -6,14 +6,36 @@ public function listallcategories()
 {
 ?>
 
+
+
+
+
+
+<table id="data-table" class="table table-striped table-bordered">
+		<thead>
+				<tr>
+						<th width="100px" nowrap>ID</th>
+						<th width="100px" nowrap>NAME</th>
+						<th width="10px" nowrap>Category</th>
+							 <th width="20px" nowrap>SubCategory</th>
+									<th width="20px" nowrap>sub-sub-Category</th>
+						<th width="200px" nowrap>STATUS</th>
+						<th width="100px" nowrap>DATE</th>
+						<th>CID</th>
+						<th>EDIT</th>
+								<th>DELETE</th>
+
+				</tr>
+		</thead>
+		<tbody >
+
                                         <?php /*<th>s.id</th>
                                        // <th>Sub category</th>
                                        th>s-sid</th>
-                                        //<th>S-sub category</th>*/?>
+                                        //<th>S-sub category</th>*/
 
 
 
-<?php
 
 $sql="SELECT * from categories";
  $query=mysqli_query($this->db,$sql);
@@ -33,7 +55,7 @@ $sql="SELECT * from categories";
                                            <td> </td>
 																					 <td>	<button type="button" name="update" data-id0="<?php echo$row['id'];?>" class="btn btn-xs btn-success update">EDIT</button></td>
 																					 <td><button type="button"  data-id3="<?php echo$row['id'];?>" class="btn btn-xs btn-danger delete">DELETE</button></td>
-  class="btn btn-warning btn-xs update"
+
 
 </tr>
 
@@ -88,9 +110,11 @@ while($row2=mysqli_fetch_array($query2))
 
 }
 
-?>
 
-                               <?php  }
+}?>
+</tbody>
+</table>
+<?php
 
 
 
@@ -163,10 +187,15 @@ public function InsertCategory($cat_name,$status)
 $sql7="Insert into categories set  name='$cat_name' ,status='$status'";
 $query7=mysqli_query($this->db,$sql7);
 if($query7){
-header("location:url.php?slider");
 
+
+
+
+	echo"hello";
 }
 }
+
+
 /*for showing sub sub categories on admin table*/
 public function Deletecategory($id)
 {
@@ -180,38 +209,80 @@ echo"Category deleted";
 }
 }
 
+public function checkcat()
+{
+	?>
 
 
+		<?php
+$checkcat="SELECT * FROM categories WHERE status='1'  ";
+$check=mysqli_query($this->db,$checkcat);
+$count=mysqli_num_rows($check);
+/*if (($count) ==0 )
+{
+	echo'<input type="text" name="cat_name" id="categoryname" class="form-control" />';
 
 
+}
+else{
+	*/?>
+
+		<?php
+while($roww=mysqli_fetch_array($check))
+{
+?>
+<option value="<?php echo$roww['id']?>"> <?php echo$roww['name']?></option>
+<?php }
+?>
 
 
-
-
-
-
-
+<?php
+//}
+}
 
 /*for showing categories on select admin table*/
 public function selectallcatgories()
 
 {
-$sql8="SELECT * from categories where status='active'";
-$query8=mysqli_query($this->db,$sql8);
-while($row=mysqli_fetch_array($query8))
-{
-?>
-<option><?php echo$row['name'];?></option>
-<?php
-}
+	?>	 <option value="">Select Category</option>
+	<?php
+	$country = '';
+	$query = "SELECT category FROM category GROUP BY category ORDER BY category ASC";
+	$result = mysqli_query($this->db, $query);
+	while($row = mysqli_fetch_array($result))
+	{
+	 $country .= '<option value="'.$row["category"].'">'.$row["category"].'</option>';
+	}
+	echo$country;
 }
 /* end -----for showing categories on select admin table*/
 
+public function selectsubsubcat()
+{
 
-
-
-
-
+	$output = '';
+  if($_POST["action"] == "category")
+  {
+   $query = "SELECT subcategory FROM category WHERE category = '".$_POST["query"]."' GROUP BY subcategory";
+   $result = mysqli_query($this->db, $query);
+   $output .= '<option value="">Select State</option>';
+   while($row = mysqli_fetch_array($result))
+   {
+    $output .= '<option value="'.$row["subcategory"].'">'.$row["subcategory"].'</option>';
+   }
+  }
+  if($_POST["action"] == "subcategory")
+  {
+   $query = "SELECT subsubcategory FROM category WHERE subcategory = '".$_POST["query"]."'";
+   $result = mysqli_query($this->db, $query);
+   $output .= '<option value="">Select City</option>';
+   while($row = mysqli_fetch_array($result))
+   {
+    $output .= '<option value="'.$row["subsubcategory"].'">'.$row["subsubcategory"].'</option>';
+   }
+  }
+  echo $output;
+	}
 
 
 public function edit($id,$text,$column_name)
@@ -259,5 +330,6 @@ foreach($row10 as $row11)
 	}
 
 }
+
 
 ?>
